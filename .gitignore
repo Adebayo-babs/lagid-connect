@@ -1,0 +1,25 @@
+# Dependencies and builds
+node_modules/
+.next/
+out/
+build/
+.gradle/
+.cxx/
+captures/
+
+# Secrets and machine-specific settings
+.env
+.env.*
+!.env.example
+local.properties
+*.jks
+*.keystore
+
+# Sandbox responses (real sample records)
+api/samples/
+
+# Editors / OS
+.idea/
+*.iml
+.DS_Store
+*.log

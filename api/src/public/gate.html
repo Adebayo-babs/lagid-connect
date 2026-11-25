@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gate Monitor · LagID Connect</title>
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --amber: #F2A541;
+    --paper: #F5F3EE;
+    --muted: #C5D0DE;
+    --good: #1E7A5A;
+    --good-bg: #D9F2E6;
+    --bad: #B3261E;
+    --bad-bg: #FBE1DE;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--navy);
+    color: var(--paper);
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 600;
+  }
+  #status { color: var(--muted); letter-spacing: 0; text-transform: none; }
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .card {
+    width: min(1100px, 100%);
+    min-height: 60vh;
+    border-radius: 32px;
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 18px;
+    background: #16263D;
+    transition: background 0.25s ease;
+  }
+  .card.granted { background: var(--good-bg); color: var(--good); }
+  .card.denied { background: var(--bad-bg); color: var(--bad); }
+  .verdict {
+    font-size: clamp(40px, 7vw, 96px);
+    font-weight: 800;
+    white-space: nowrap;
+    letter-spacing: 2px;
+  }
+  .avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    font-weight: 700;
+    background: var(--navy);
+    color: var(--amber);
+  }
+  .name { font-size: clamp(28px, 4vw, 52px); font-weight: 700; color: var(--navy); }
+  .meta { font-size: 22px; color: #4A5568; }
+  .idle .name, .idle .meta { color: var(--paper); }
+  .reason { font-size: 22px; font-weight: 600; }
+  .hidden { display: none !important; }
+  #start {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 27, 45, 0.96);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 24px;
+  }
+  #start h1 { font-size: 40px; }
+  #start p { color: var(--muted); font-size: 18px; max-width: 520px; text-align: center; }
+  #start input {
+    width: min(520px, 100%);
+    padding: 14px 16px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid #24385A;
+    background: #16263D;
+    color: var(--paper);
+  }
+  #start button {
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border: 0;
+    border-radius: 14px;
+    background: var(--amber);
+    color: var(--navy);
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <span id="business">Gate Monitor</span>
+    <span id="status">Not connected</span>
+  </header>
+
+  <main>
+    <div id="card" class="card idle">
+      <div id="verdict" class="verdict">READY</div>
+      <div id="avatar" class="avatar hidden"></div>
+      <div id="name" class="name">Waiting for the next resident</div>
+      <div id="meta" class="meta"></div>
+      <div id="reason" class="reason"></div>
+    </div>
+  </main>
+
+  <div id="start">
+    <h1>Gate Monitor</h1>
+    <p>Paste the estate’s API key, then start. Starting also turns on the sound.</p>
+    <input id="key" type="password" placeholder="lc_test_..." autocomplete="off">
+    <button id="go" type="button">Start monitor</button>
+  </div>
+
+  <script src="/gate.js"></script>
+</body>
+</html>

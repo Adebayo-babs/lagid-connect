@@ -1,0 +1,102 @@
+/* A deliberately different look: this is the estate's own site */
+.page {
+  min-height: 100vh;
+  background: #FFFFFF;
+  color: #1F2A1F;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  border-bottom: 1px solid #E5E8E1;
+}
+.logo { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
+.logo span { color: #2F6B3F; }
+.nav { font-family: system-ui, sans-serif; color: #5B665B; font-size: 14px; }
+.hero {
+  background: #2F6B3F;
+  color: #F4F7F2;
+  padding: 56px 48px;
+}
+.hero h1 { font-size: 40px; max-width: 720px; }
+.kicker {
+  font-family: system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  color: #CFE3D4;
+  margin-bottom: 10px;
+}
+.lead {
+  font-family: system-ui, sans-serif;
+  font-size: 18px;
+  max-width: 620px;
+  margin-top: 14px;
+  color: #E3EEE5;
+}
+.body {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px;
+  padding: 40px 48px;
+  max-width: 1200px;
+  font-family: system-ui, sans-serif;
+}
+.form, .status {
+  border: 1px solid #E5E8E1;
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.form h2, .status h2 { font-family: Georgia, serif; font-size: 22px; }
+.form label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px; }
+.form input, .form select {
+  font: inherit;
+  padding: 11px 12px;
+  border: 1px solid #CDD3C8;
+  border-radius: 10px;
+  background: #FFF;
+}
+.lagid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: #0F1B2D;
+  color: #F5F3EE;
+  font: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+.lagid:disabled { opacity: 0.5; cursor: default; }
+.mark {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #F2A541;
+  color: #0F1B2D;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.note, .muted { color: #5B665B; font-size: 14px; }
+.error { color: #B3261E; font-weight: 500; }
+.footer {
+  padding: 24px 48px 40px;
+  color: #8A938A;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+}
+@media (max-width: 860px) {
+  .body { grid-template-columns: 1fr; padding: 24px; }
+  .hero, .header { padding-left: 24px; padding-right: 24px; }
+}

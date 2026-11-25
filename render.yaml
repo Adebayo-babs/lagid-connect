@@ -1,0 +1,38 @@
+# Render Blueprint for the Connect API.
+# In Render: New > Blueprint > pick this repo.
+# Values marked sync: false are typed into Render's dashboard
+# (copy them from api/.env). Never commit them.
+services:
+  - type: web
+    name: lagid-connect-api
+    runtime: node
+    rootDir: api
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "20"
+      - key: SANDBOX_BASE_URL
+        value: https://hackathon-api.dev.identikosharedsolutions.com
+      - key: SANDBOX_MOCK
+        value: "false"
+      - key: DEMO_OTP
+        value: "true"
+      - key: SANDBOX_CACHE_TTL
+        value: "60"
+      - key: PUBLIC_URL
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: SANDBOX_API_KEY
+        sync: false
+      - key: LAGID_HASH_SALT
+        sync: false
+      - key: SIGNING_KID
+        sync: false
+      - key: SIGNING_PRIVATE_JWK
+        sync: false
