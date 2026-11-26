@@ -131,7 +131,11 @@ async function main() {
   }
   const pickIndex = Number(process.env.DEMO_INDEX || 0);
   const r0 = usable[pickIndex % usable.length];
-  const r1 = usable[(pickIndex + 1) % usable.length];
+  // A resident nobody has linked: take one from the end
+  // of the list (early ones get linked on real phones)
+  const r1 = usable[usable.length - 1 - (pickIndex % usable.length)] === r0
+    ? usable[usable.length - 2]
+    : usable[usable.length - 1 - (pickIndex % usable.length)];
   RESIDENT = {
     lagId: r0.lagId,
     phone: r0.phone,
